@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app>
+    <display-name>Club Ciclista Ardiyas</display-name>
+
+    <context-param>
+    <description>Ruta donde guardar las imágenes</description>
+    <param-name>image-path</param-name>
+    <param-value>\Users\Jorge Díez\Desktop\apache-tomcat-9.0.88\webapps\club_pictures</param-value>
+    </context-param>
+</web-app>
