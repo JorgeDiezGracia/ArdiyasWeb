@@ -11,8 +11,8 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Club Ciclista Ardiyas</h1>
-                <p class="lead text-body-dark">Entrenamientos para preparar las carreras</p>
+                <h1 class="fw-light"><strong>Club Ciclista Ardiyas</strong></h1>
+                <p class="lead text-body-dark"><strong>Entrenamientos de resistencia, potencia, fuerza y agilidad </strong></p>
                 <p>
                     <%
                         if (role.equals("admin")) {
@@ -21,9 +21,9 @@
                     <%
                         }
                     %>
-                    <a href="index-training.jsp" class="btn btn-dark my-2">Consulta entrenamientos</a>
+                    <a href="index.jsp" class="btn btn-dark my-2">Carreras</a>
 
-                    <a href="index-bikepacking.jsp" class="btn btn-dark my-2">Próximos bikepackings</a>
+                    <a href="index-bikepacking.jsp" class="btn btn-dark my-2">Bikepackings</a>
                 </p>
             </div>
         </div>
@@ -57,9 +57,9 @@
                     for (Training training : trainings) {
                 %>
 
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="../club_pictures/<%= training.getPicture() %>"/>
+                <div class="col" style="display: flex";>
+                    <div class="card shadow-sm" style="width: 24rem;">
+                        <img src="../club_pictures/<%= training.getPicture() %>" style="height: 15rem;"/>
                         <div class="card-body">
                             <p class="card-text"><strong><%=training.getName()%></strong></p>
                             <p class="card-text"><%=training.getDescription()%></p>
@@ -70,12 +70,12 @@
                                         if (role.equals("admin")) {
                                     %>
                                     <a href="edit-training.jsp?id=<%= training.getId() %>" type="button" class="btn btn-sm btn-outline-dark">Editar</a>
-                                    <a href="remove-training?id=<%= training.getId() %>" type="button" class="btn btn-sm btn-outline-dark">Eliminar</a>
+                                    <a href="remove-training?id=<%= training.getId() %>" type="button" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                     <%
                                         }
                                     %>
                                 </div>
-                                <small class="text-body-dark"><%=training.getType()%></small>
+
 
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@include file="includes/header-login.jsp"%>
 
 <script type="text/javascript">
@@ -88,10 +89,16 @@
             <label for="floatingPassword">Contraseña</label>
         </div>
 
-        <button class="btn btn-primary w-100 py-2" type="submit">Iniciar sesión</button>
+        <button class="btn btn-dark w-100 py-2" type="submit">Iniciar sesión</button>
     </form>
-    <br/>
+
     <div id="result"></div>
+    <p></p>
+
+    <div style="text-align: center;">
+        <img width="300" src="icons/logo.jpg">
+    </div>
+
 </main>
 
 <%@include file="includes/footer.jsp"%>
