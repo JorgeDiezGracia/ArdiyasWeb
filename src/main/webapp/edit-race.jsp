@@ -27,6 +27,7 @@
                 timeout: 600000,
                 success: function (data) {
                     $("#result").html(data);
+                    //$("#name").value("");
                     $("#edit-button").prop("disabled", false);
                 },
                 error: function (error) {

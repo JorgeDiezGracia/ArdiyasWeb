@@ -41,8 +41,8 @@ public class EditRace extends HttpServlet {
         }
 
         try {
-            //if (hasValidationErrors(request, response))
-              // return;
+            if (hasValidationErrors(request, response))
+               return;
 
             int id = 0;
             if (request.getParameter("id") != null) {
@@ -96,7 +96,7 @@ public class EditRace extends HttpServlet {
             }
         } catch (ParseException pe) {
             pe.printStackTrace();
-            sendError("El formato de fecha no es correcto", response);
+            sendError("El formato de fecha o precio no es correcto", response);
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
             sendError("Internal Server Error", response);
@@ -109,22 +109,37 @@ public class EditRace extends HttpServlet {
     private boolean hasValidationErrors(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean hasErrors = false;
 
-        if (request.getParameter("name") == null) {
-            sendError("El nombre es un campo obligatorio", response);
-            hasErrors = true;
-        }
+
         try {
+            String name = request.getParameter("name");
+            if ( name.trim().length() ==0) {
+                sendError("El nombre es un campo obligatorio", response);
+                hasErrors = true;
+                return hasErrors;
+            }
             DateUtils.parse(request.getParameter("date"));
-        } catch (ParseException pe) {
-            sendError("Formato de fecha no válido", response);
-            hasErrors = true;
-        }
+
+            if (!DateUtils.validate(request.getParameter("date"))) {
+                sendError("Formato de fecha no válida", response);
+                hasErrors = true;
+                return hasErrors;
+            }
+
 
             if (!NumberUtils.isCreatable(request.getParameter("price"))) {
                 sendError("Formato de precio no válido", response);
                 hasErrors = true;
+                return hasErrors;
             }
-
+            if (Float.parseFloat(request.getParameter("price")) < 0) {
+                sendError("El precio no puede ser negativo", response);
+                hasErrors = true;
+                return hasErrors;
+            }
+        } catch (ParseException pe) {
+            sendError("Formato de fecha no válido", response);
+            hasErrors = true;
+        }
             return hasErrors;
         }
     }
