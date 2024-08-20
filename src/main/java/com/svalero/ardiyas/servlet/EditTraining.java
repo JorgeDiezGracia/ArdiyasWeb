@@ -92,23 +92,26 @@ public class EditTraining extends HttpServlet {
     private boolean hasValidationErrors(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean hasErrors = false;
 
-        if (request.getParameter("name") == null) {
-            sendError("El nombre es un campo obligatorio", response);
-            hasErrors = true;
-        }
         try {
+            String name = request.getParameter("name");
+            if ( name.trim().length() ==0) {
+                sendError("El nombre es un campo obligatorio", response);
+                hasErrors = true;
+                return hasErrors;
+            }
             DateUtils.parse(request.getParameter("date"));
+
+            if (!DateUtils.validate(request.getParameter("date"))) {
+                sendError("Formato de fecha no válida", response);
+                hasErrors = true;
+                return hasErrors;
+            }
+
+
         } catch (ParseException pe) {
             sendError("Formato de fecha no válido", response);
             hasErrors = true;
         }
-
-       // if (!NumberUtils.isCreatable(request.getParameter("price"))) {
-            //sendError("Formato de precio no válido", response);
-           // hasErrors = true;
-       // }
-
         return hasErrors;
-
     }
 }
