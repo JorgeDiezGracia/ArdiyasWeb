@@ -15,7 +15,7 @@ public interface BikepackingDao {
     @UseRowMapper(BikepackingMapper.class)
     List<Bikepacking> getAllBikepackings();
 
-    @SqlQuery("SELECT * FROM bikepacking WHERE name LIKE CONCAT('%',:searchTerm,'%') " +
+    @SqlQuery("SELECT * FROM bikepackings WHERE name LIKE CONCAT('%',:searchTerm,'%') " +
             "OR name LIKE CONCAT('%',:searchTerm,'%') OR description LIKE CONCAT('%',:searchTerm,'%')")
     @UseRowMapper(BikepackingMapper.class)
     List<Bikepacking> getBikepackings(@Bind("searchTerm") String searchTerm);
