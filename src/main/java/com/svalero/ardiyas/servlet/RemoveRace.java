@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/remove-race")
-public class RemoveRace extends HttpServlet {
 
+public class RemoveRace extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -29,5 +29,4 @@ public class RemoveRace extends HttpServlet {
             sqle.printStackTrace();
         }
     }
-
 }

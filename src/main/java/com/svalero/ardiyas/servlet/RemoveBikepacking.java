@@ -14,7 +14,6 @@ import java.sql.SQLException;
 @WebServlet("/remove-bikepacking")
 
 public class RemoveBikepacking extends HttpServlet{
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
