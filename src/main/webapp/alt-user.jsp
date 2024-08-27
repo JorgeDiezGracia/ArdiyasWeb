@@ -10,5 +10,4 @@
 <title>Hola</title>
 </body>
 
-
 <%@include file="includes/footer.jsp"%>

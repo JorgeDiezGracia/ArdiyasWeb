@@ -77,7 +77,6 @@
      </textarea>
             </div>
 
-
             <div class="col-md-4">
                 <label for="date" class="form-label">Fecha</label>
                 <input type="date" name="date" class="form-control" id="date" placeholder="dd/mm/yyyy"
@@ -89,7 +88,6 @@
                 <input type="text" name="type" class="form-control" id="type" placeholder="tipo de bicicleta"
                     <% if (id !=0) { %> value="<%= training.getType() %>"<% } %>>
             </div>
-
 
             <div class="col-md-4">
                 <label for="picture" class="form-label">Foto</label>

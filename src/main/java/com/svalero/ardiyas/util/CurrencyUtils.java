@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.util.Locale;
 
 public class CurrencyUtils {
-
     public static String format(float value) {
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("es", "es"));
         return numberFormat.format(value);

@@ -84,6 +84,7 @@
             <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario">
             <label for="floatingInput">Usuario</label>
         </div>
+
         <div class="form-floating">
             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
             <label for="floatingPassword">Contraseña</label>
@@ -94,11 +95,9 @@
 
     <div id="result"></div>
     <p></p>
-
     <div style="text-align: center;">
         <img width="300" src="icons/logo.jpg">
     </div>
-
 </main>
 
 <%@include file="includes/footer.jsp"%>

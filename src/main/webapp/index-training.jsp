@@ -22,7 +22,6 @@
                         }
                     %>
                     <a href="index.jsp" class="btn btn-dark my-2">Carreras</a>
-
                     <a href="index-bikepacking.jsp" class="btn btn-dark my-2">Bikepackings</a>
                 </p>
             </div>
@@ -75,8 +74,6 @@
                                         }
                                     %>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
