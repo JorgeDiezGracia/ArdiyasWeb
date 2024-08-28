@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/remove-training")
-public class RemoveTraining extends HttpServlet {
 
+public class RemoveTraining extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));

@@ -76,8 +76,6 @@
 <% if (id !=0) { %> <%= bikepacking.getDescription() %><% } %>
      </textarea>
             </div>
-
-
             <div class="col-md-4">
                 <label for="date" class="form-label">Fecha</label>
                 <input type="date" name="date" class="form-control" id="date" placeholder="dd/mm/yyyy"
@@ -89,7 +87,6 @@
                 <input type="text" name="price" class="form-control" id="price" placeholder="precio"
                     <% if (id !=0) { %> value="<%= bikepacking.getPrice() %>"<% } %>>
             </div>
-
 
             <div class="col-md-4">
                 <label for="picture" class="form-label">Foto</label>

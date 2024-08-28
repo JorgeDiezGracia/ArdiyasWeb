@@ -4,11 +4,9 @@ import com.svalero.ardiyas.domain.User;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
-
 import java.util.List;
 
 public interface UserDao {
-
     @SqlQuery("SELECT * FROM users")
     @UseRowMapper(UserMapper.class)
     List<User> getAllUsers();
@@ -29,5 +27,4 @@ public interface UserDao {
 
     @SqlUpdate("DELETE FROM users WHERE id = ?")
     int removeUser(int id);
-
 }

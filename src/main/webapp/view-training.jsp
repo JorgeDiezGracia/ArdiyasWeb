@@ -10,7 +10,6 @@
 <main>
     <section class="py-5 text-center container"style="display: flex">
 
-
         <%
             int id = Integer.parseInt(request.getParameter("id"));
             Database.connect();
@@ -19,10 +18,7 @@
 
         <div class="card mb-3" style="width: 18rem;">
             <div class="row g-0">
-                <!--<div class="col-md-8">-->
                     <img src="../club_pictures/<%= training.getPicture() %>" class=img-fluid rounded-start/>
-                    <!--<img src="../club_pictures/ class=img-fluid rounded-start">-->
-                <!--</div>-->
                 <div class="col-md-16">
                     <div class="card-body">
                         <h5 class="card-title"><%= training.getName()%></h5>
@@ -35,7 +31,6 @@
             </div>
         </div>
     </section>
-
 </main>
 
 <%@include file="includes/footer.jsp"%>

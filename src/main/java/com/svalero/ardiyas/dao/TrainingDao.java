@@ -30,7 +30,6 @@ public interface TrainingDao {
     @SqlUpdate("UPDATE trainings SET name = ?, description = ?, datetime = ?, type = ?, picture = ? WHERE id = ?")
     int updateTraining(String name, String description, Date date, String type, String picture, int id);
 
-
     @SqlUpdate("DELETE FROM trainings WHERE id = ?")
     int removeTraining(int id);
 

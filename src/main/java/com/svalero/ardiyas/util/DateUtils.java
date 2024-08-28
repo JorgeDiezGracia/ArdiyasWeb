@@ -10,7 +10,6 @@ import java.time.format.DateTimeParseException;
 import static com.svalero.ardiyas.util.Constants.DATE_PATTERN;
 
 public class DateUtils {
-
     public static String format(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
         return dateFormat.format(date);

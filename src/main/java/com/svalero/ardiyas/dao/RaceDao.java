@@ -30,7 +30,6 @@ public interface RaceDao {
     @SqlUpdate("UPDATE races SET name = ?, description = ?, distance = ?, slope = ?, datetime = ?, price = ?, picture = ? WHERE id = ?")
     int updateRace(String name, String description, String distance, String slope, Date date, float price, String picture, int id);
 
-
     @SqlUpdate("DELETE FROM races WHERE id = ?")
     int removeRace(int id);
 

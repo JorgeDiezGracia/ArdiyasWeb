@@ -17,8 +17,8 @@ import java.sql.SQLException;
 import static com.svalero.ardiyas.util.ErrorUtils.sendError;
 
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
 
+public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
             Database.connect();
             User user = Database.jdbi.withExtension(UserDao.class,
                     dao -> dao.getUser(username, password));
+
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", user.getUsername());
@@ -39,6 +40,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 sendError("El usuario no existe", response);
             }
+
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
             sendError("Internal Server Error", response);

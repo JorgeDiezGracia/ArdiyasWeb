@@ -91,7 +91,6 @@
     </style>
 
 
-    <!-- Custom styles for this template -->
     <link href="css/sign-in.css" rel="stylesheet">
 </head>
 <body>
@@ -107,5 +106,3 @@
     </div>
 </header>
 
-<!--</body>
-</html>-->

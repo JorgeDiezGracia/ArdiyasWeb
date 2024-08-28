@@ -1,11 +1,8 @@
 package com.svalero.ardiyas.servlet;
 
 import com.svalero.ardiyas.dao.Database;
-import com.svalero.ardiyas.dao.RaceDao;
 import com.svalero.ardiyas.dao.TrainingDao;
-import com.svalero.ardiyas.util.CurrencyUtils;
 import com.svalero.ardiyas.util.DateUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -57,6 +54,7 @@ public class EditTraining extends HttpServlet {
 
             String imagePath = request.getServletContext().getInitParameter("image-path");
             String filename = null;
+
             if (picturePart.getSize() == 0) {
                 filename = "no-image.jpg";
             } else {
@@ -64,8 +62,10 @@ public class EditTraining extends HttpServlet {
                 InputStream fileStream = picturePart.getInputStream();
                 Files.copy(fileStream, Path.of(imagePath + File.separator + filename));
             }
+
             Database.connect();
             final String finalFilename = filename;
+
             if (id == 0) {
                 int affectedRows = Database.jdbi.withExtension(TrainingDao.class,
                         dao -> dao.addTraining(name, description, date, type, finalFilename));
@@ -75,8 +75,8 @@ public class EditTraining extends HttpServlet {
                 int affectedRows = Database.jdbi.withExtension(TrainingDao.class,
                         dao -> dao.updateTraining(name, description, date, type, finalFilename, finalId));
                 sendMessage("Actividad modificada correctamente", response);
-
             }
+
         } catch (ParseException pe) {
             pe.printStackTrace();
             sendError("El formato de fecha no es correcto", response);
@@ -91,7 +91,6 @@ public class EditTraining extends HttpServlet {
 
     private boolean hasValidationErrors(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean hasErrors = false;
-
         try {
             String name = request.getParameter("name");
             if ( name.trim().length() ==0) {
@@ -106,7 +105,6 @@ public class EditTraining extends HttpServlet {
                 hasErrors = true;
                 return hasErrors;
             }
-
 
         } catch (ParseException pe) {
             sendError("Formato de fecha no válido", response);

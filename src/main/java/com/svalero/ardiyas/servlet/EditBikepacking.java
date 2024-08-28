@@ -2,15 +2,12 @@ package com.svalero.ardiyas.servlet;
 
 import com.svalero.ardiyas.dao.Database;
 import com.svalero.ardiyas.dao.BikepackingDao;
-import com.svalero.ardiyas.util.CurrencyUtils;
 import com.svalero.ardiyas.util.DateUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,8 +25,6 @@ import static com.svalero.ardiyas.util.ErrorUtils.sendMessage;
 @MultipartConfig
 
 public class EditBikepacking extends HttpServlet {
-
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -45,7 +40,6 @@ public class EditBikepacking extends HttpServlet {
         try {
             if (hasValidationErrors(request, response))
                 return;
-
             int id = 0;
             if (request.getParameter("id") != null) {
                 id = Integer.parseInt(request.getParameter("id"));
@@ -55,10 +49,8 @@ public class EditBikepacking extends HttpServlet {
             String description = request.getParameter("description");
             Date date = DateUtils.parse(request.getParameter("date"));
             float price = Float.parseFloat(request.getParameter("price"));
-            //float price = CurrencyUtils.parse(request.getParameter("price"));
             Part picturePart = request.getPart("picture");
 
-            // ANTERIOR FORMA DE GUARDAR LA IMAGEN EN DISCO
             String imagePath = request.getServletContext().getInitParameter("image-path");
             String filename = null;
             if (picturePart.getSize() == 0) {
@@ -68,18 +60,6 @@ public class EditBikepacking extends HttpServlet {
                 InputStream fileStream = picturePart.getInputStream();
                 Files.copy(fileStream, Path.of(imagePath + File.separator + filename));
             }
-
-            // String imagePath = ".";
-            //if (!new File(imagePath).exists())
-            //     new File(imagePath).mkdir();
-            //String filename = null;
-            //if (picturePart.getSize() == 0) {
-            // filename = "no-image.jpg";
-            // } else {
-            //  filename = UUID.randomUUID() + ".jpg";
-            //  InputStream fileStream = picturePart.getInputStream();
-            //  Files.copy(fileStream, Path.of(imagePath + File.separator + filename));
-            //}
 
             Database.connect();
             final String finalFilename = filename;
@@ -92,7 +72,6 @@ public class EditBikepacking extends HttpServlet {
                 int affectedRows = Database.jdbi.withExtension(BikepackingDao.class,
                         dao -> dao.updateBikepacking(name, description, date, price, finalFilename, finalId));
                 sendMessage("Actividad modificada correctamente", response);
-
             }
         } catch (ParseException pe) {
             pe.printStackTrace();
@@ -108,7 +87,6 @@ public class EditBikepacking extends HttpServlet {
 
     private boolean hasValidationErrors(HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean hasErrors = false;
-
         try {
             String name = request.getParameter("name");
             if ( name.trim().length() ==0) {
@@ -124,12 +102,12 @@ public class EditBikepacking extends HttpServlet {
                 return hasErrors;
             }
 
-
             if (!NumberUtils.isCreatable(request.getParameter("price"))) {
                 sendError("Formato de precio no válido", response);
                 hasErrors = true;
                 return hasErrors;
             }
+
             if (Float.parseFloat(request.getParameter("price")) < 0) {
                 sendError("El precio no puede ser negativo", response);
                 hasErrors = true;
