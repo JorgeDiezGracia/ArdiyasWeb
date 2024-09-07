@@ -1,4 +1,4 @@
-Actividad de Aprendiazaje de la 2ª Evaluación de Programación.
+Actividad de Aprendizaje de la 2ª Evaluación de Programación.
 
 Aplicación web del Club Ciclista Ardiyas en las que se puede visualizar marchas cicloturistas, entrenamientos disponibles y próximos bikepackings.
 
